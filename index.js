@@ -36,4 +36,4 @@ app.get('/filmes/:id', (req,res)=>{ //colocando os : depois de / informamos que 
 
 app.listen(port, function(){ //listen é uma função que se traduz como '' onde quero que meu servidor seja escutado?''
     console.log(`App rodando na porta  http://localhost:${port}`); // este console.log é apenas uma mensagem no console para confirmar que nosso app esta funcionando.
-});
+}); // poderiamos apenas colocar 'app.listen(port);' 
