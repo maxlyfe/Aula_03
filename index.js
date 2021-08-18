@@ -34,6 +34,20 @@ app.get('/filmes/:id', (req,res)=>{ //colocando os : depois de / informamos que 
     res.send(filme); // caso não caia dentro do if ele vai enviar estra outra mng.
 });
 
+// LISTA - GET
+// CRIAR - POST
+// ATUALIZAR - PUT
+// DELETAR - DELETE
+// rota para cadastrar um novo filme.
+
+app.post('/filmes', (req, res) =>{ // estamos enviando um request e junto a ela uma informação.
+    const filme = req.body.filme; // indicamos que vamos realizar uma requisisão com a informação no body.
+    const id = filmes.length; // damos um id do tamanho da nossa array
+    filmes.push(filme); // adicionamos a const filme no array filmes.
+    res.send(`Filme adicionado com sucesso: ${filme}. O ID do filme é: ${id}`);
+});
+
+
 app.listen(port, function(){ //listen é uma função que se traduz como '' onde quero que meu servidor seja escutado?''
     console.log(`App rodando na porta  http://localhost:${port}`); // este console.log é apenas uma mensagem no console para confirmar que nosso app esta funcionando.
 }); // poderiamos apenas colocar 'app.listen(port);' 
