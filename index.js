@@ -44,7 +44,15 @@ app.post('/filmes', (req, res) =>{ // estamos enviando um request e junto a ela 
     const filme = req.body.filme; // indicamos que vamos realizar uma requisisão com a informação no body.
     const id = filmes.length; // damos um id do tamanho da nossa array
     filmes.push(filme); // adicionamos a const filme no array filmes.
-    res.send(`Filme adicionado com sucesso: ${filme}. O ID do filme é: ${id}`);
+    res.send(`Filme adicionado com sucesso: ${filme}. O ID do filme é: ${id}`); // enviamos uma mensagem confirmando o post com as informações que desejamos.
+});
+
+app.put('/filmes/:id', (req, res) =>{ // criamos um atualizar na rota /filme/id
+    const id = req.params.id -1; // selecionamos o filme com o id unformado na rota.
+    const filme = req.body.filme; // pedimos o nome do novo filme
+    const filmeAnterior = filmes[id]; // guardo o nome atual do filme em 'filmeAnterior' penas para dar essa informação ao usuario.
+    filmes[id] = filme; // colocamos o nome inserido no body e guardamos na lista filmes no id selecionado na rota.
+    res.send(`Filme atualizado com sucesso: ${filmeAnterior} para ${filme}.`); // enviamos uma mensagem de sucesso.
 });
 
 
