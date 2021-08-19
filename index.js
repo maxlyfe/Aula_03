@@ -60,6 +60,16 @@ app.delete('/filmes/:id', (req, res)=>{ //criamos a roda delete
     const filme = filmes[id]; // trago o nome do filme da lista filmes (filtrando pelo id especificado na rota) e guardo em filme para poder utilizar na mensagem mais na frente.
     delete filmes[id]; // deletamos o filme da lista filmes filtrado pelo id especificado na rota
     res.send(`O filme ${filme} foi excluido com sucesso.`);
+    // filmes.splice(id,1)  com este codigo podemos subistiruir a linha anterior e em vez de fazer o delete e deixar o id null ele suprime e diminui o lengh
+});
+
+app.delete('/filmesVerificado/:id', (req, res)=>{ 
+    const id = req.params.id -1;
+    const filme =filmes[id];
+    if(!filme){
+        res.send('Esse filme não existe')
+    };
+    delete filmes[id];
 });
 
 app.listen(port, function(){ //listen é uma função que se traduz como '' onde quero que meu servidor seja escutado?''
