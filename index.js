@@ -55,6 +55,12 @@ app.put('/filmes/:id', (req, res) =>{ // criamos um atualizar na rota /filme/id
     res.send(`Filme atualizado com sucesso: ${filmeAnterior} para ${filme}.`); // enviamos uma mensagem de sucesso.
 });
 
+app.delete('/filmes/:id', (req, res)=>{ //criamos a roda delete
+    const id = req.params.id -1; // pedimos para guardar o id especificado na rota.
+    const filme = filmes[id]; // trago o nome do filme da lista filmes (filtrando pelo id especificado na rota) e guardo em filme para poder utilizar na mensagem mais na frente.
+    delete filmes[id]; // deletamos o filme da lista filmes filtrado pelo id especificado na rota
+    res.send(`O filme ${filme} foi excluido com sucesso.`);
+});
 
 app.listen(port, function(){ //listen é uma função que se traduz como '' onde quero que meu servidor seja escutado?''
     console.log(`App rodando na porta  http://localhost:${port}`); // este console.log é apenas uma mensagem no console para confirmar que nosso app esta funcionando.
